@@ -1,7 +1,19 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {# Insérer les balises <link> de l'entrée "app" #}
+    {{ encore_entry_link_tags('app') }}
+{% endblock %}
+
+{% block javascripts %}
+    {# Insérer les balises <script> de l'entrée "app" #}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
     <h1>Accueil</h1>
 {% endblock %}
+
+
