@@ -7,13 +7,19 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 {#        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">#}
         <title>{% block title %}Homepage{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {# Insérer les balises <link> de l'entrée "app" #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
 
     </head>
 
     <body>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {# Insérer les balises <script> de l'entrée "app" #}
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
     </body>
 
 </html>
