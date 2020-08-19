@@ -27,7 +27,7 @@ abstract class BaseFixture extends Fixture {
      * Méthode à implémenter pour les classes qui héritent de celle-ci et générera les données
      * @param ObjectManager $manager
      */
-    abstract protected function loadData();
+    abstract protected function loadData(ObjectManager $manager);
 
     /**
      * Méthode appelée par le système de fixtures

@@ -3,14 +3,15 @@
 namespace App\DataFixtures;
 
 use App\Entity\Artist;
+use Doctrine\Persistence\ObjectManager;
 
 class ArtistFixtures extends BaseFixture
 {
-    public function loadData()
+    public function loadData(ObjectManager $manager)
     {
         $this->createMany(50, function () {
             return (new Artist())
-                ->setName($this->faker->realText(50))
+                ->setName($this->faker->name(null))
                 ->setDescription($this->faker->optional(0.5)->realText(200))
             ;
         });
