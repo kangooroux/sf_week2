@@ -38,6 +38,12 @@ class Record
      */
     private $releasedDate;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Producer::class, inversedBy="records")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $producer;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -87,6 +93,18 @@ class Record
     public function setReleasedDate(\DateTimeInterface $releasedDate): self
     {
         $this->releasedDate = $releasedDate;
+
+        return $this;
+    }
+
+    public function getProducer(): ?Producer
+    {
+        return $this->producer;
+    }
+
+    public function setProducer(?Producer $producer): self
+    {
+        $this->producer = $producer;
 
         return $this;
     }

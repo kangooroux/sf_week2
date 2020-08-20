@@ -3,9 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Artist;
+use App\Entity\Producer;
 use App\Entity\Record;
 use App\Repository\ArtistRepository;
+use App\Repository\ProducerRepository;
 use App\Repository\RecordRepository;
+use http\Env\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -52,5 +55,19 @@ class RecordController extends AbstractController
         return $this->render('record/record_news.html.twig', [
             'record_news' => $recordRepository->findNewRecords(),
         ]);
+    }
+
+    /**
+     * Page d'un label de production
+     * @Route("/label/{id}", name="label_page")
+     */
+    public function labelPage(RecordRepository $recordRepository, Producer $producer)
+    {
+        return $this->render('record/label_page.html.twig', [
+//            'label_records' => $recordRepository->findRecordsFromProducer($producer->getId()),
+            'label_records' => $recordRepository->findBy(['producer' => $producer->getId()]),
+            'label_name' => $producer->getName(),
+        ]);
+
     }
 }

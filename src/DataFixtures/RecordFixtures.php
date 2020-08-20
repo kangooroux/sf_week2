@@ -16,6 +16,7 @@ class RecordFixtures extends BaseFixture
                 ->setDescription($this->faker->optional(0.8)->realText(200))
                 ->setReleasedDate($this->faker->dateTimeBetween('-2 years'))
                 ->setArtist($this->getRandomReference('artist'))
+                ->setProducer($this->getRandomReference('producer'))
             ;
         });
     }
@@ -23,7 +24,8 @@ class RecordFixtures extends BaseFixture
     public function getDependencies()
     {
         return [
-            ArtistFixtures::class
+            ArtistFixtures::class,
+            ProducerFixtures::class
         ];
     }
 }

@@ -62,4 +62,17 @@ class RecordRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    /**
+     * Albums d'une maison de prod
+     */
+    public function findRecordsFromProducer($id)
+    {
+        // 'r' est un alias de Record
+        return $this->createQueryBuilder('r')
+            ->where('r.producer = ' . $id)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

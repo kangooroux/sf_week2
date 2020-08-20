@@ -21,6 +21,12 @@
                         {{ record.artist.name }}
                     </a>
                 </h2>
+                <h3 class="subtitle">
+                    Label:
+                    <a href="{{ path('label_page', { id: record.producer.id }) }}">
+                        {{ record.producer.name }}
+                    </a>
+                </h3>
 
                 <p class="content">
                     {{ record.description }}

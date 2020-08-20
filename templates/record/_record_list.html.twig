@@ -18,6 +18,10 @@
                             <strong>Artiste:</strong>
                             <a href="{{ path('artist_page', {id: record.artist.id}) }}">{{ record.artist.name }}</a>
                         </small><br>
+                        <small>
+                            <strong>Label:</strong>
+                            <a href="{{ path('label_page', {id: record.producer.id}) }}">{{ record.producer.name }}</a>
+                        </small><br>
                         {{ record.description|slice(0, 30) }} ...
                     </p>
                 </div>
