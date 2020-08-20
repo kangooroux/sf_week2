@@ -6,9 +6,7 @@ use App\Entity\Artist;
 use App\Entity\Producer;
 use App\Entity\Record;
 use App\Repository\ArtistRepository;
-use App\Repository\ProducerRepository;
 use App\Repository\RecordRepository;
-use http\Env\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -58,7 +56,7 @@ class RecordController extends AbstractController
     }
 
     /**
-     * Page d'un label de production
+     * Page d'un label de production qui va afficher la liste de ses albums
      * @Route("/label/{id}", name="label_page")
      */
     public function labelPage(RecordRepository $recordRepository, Producer $producer)
