@@ -23,7 +23,8 @@
                                             <strong>{{ artist.name }}</strong>
                                         </a>
                                         <br>
-                                        {{ artist.description|slice(0, 20) }}...
+                                        <small>Albums: {{ artist.records|length }}</small>
+                                        <p>{{ artist.description|slice(0, 20) }} ...</p>
                                     </p>
                                 </div>
                             </div>

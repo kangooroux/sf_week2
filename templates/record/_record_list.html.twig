@@ -9,18 +9,19 @@
             <div class="media-content">
                 <div class="content">
                     <p>
-                        <a href="#" class="has-text-primary">
+                        <a href="{{ path('record_page', {id: record.id}) }}" class="has-text-primary">
                             <strong>{{ record.title }}</strong>
                         </a>
                         <small>{{ record.releasedDate|date('d/m/Y') }}</small>
                         <br>
                         <small>
                             <strong>Artiste:</strong>
-                            <a href="{{ path('artist_page', {id: artist.id}) }}">{{ record.artist.name }}</a>
+                            <a href="{{ path('artist_page', {id: record.artist.id}) }}">{{ record.artist.name }}</a>
                         </small><br>
-                        {{ record.description }}
+                        {{ record.description|slice(0, 30) }} ...
                     </p>
                 </div>
             </div>
         </article>
+    </div>
 {% endfor %}
