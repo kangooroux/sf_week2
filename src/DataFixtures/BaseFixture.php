@@ -29,7 +29,6 @@ abstract class BaseFixture extends Fixture {
 
     /**
      * Méthode à implémenter pour les classes qui héritent de celle-ci et générera les données
-     * @param ObjectManager $manager
      */
     abstract protected function loadData();
 
@@ -44,7 +43,7 @@ abstract class BaseFixture extends Fixture {
         $this->faker = Factory::create('fr_FR');
 
         //on appelle loadData() pour générer les fausses données
-        $this->loadData($manager);
+        $this->loadData();
         //on éxecute l'enregistrement en base
         $this->manager->flush();
     }

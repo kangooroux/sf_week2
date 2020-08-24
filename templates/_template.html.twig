@@ -28,9 +28,12 @@
                     Artistes
                 </a>
 
-                <a class="navbar-item" href=" {{ path('record_news') }}">
-                    Nouveautés
-                </a>
+                {% if is_granted("ROLE_ADMIN") %}
+                    <a class="navbar-item" href=" {{ path('record_news') }}">
+                        Nouveautés
+                    </a>
+                {% endif %}
+
             </div>
 
             <div class="navbar-end">
@@ -39,7 +42,7 @@
                         <a class="button is-primary is-small" href="#">
                             <strong>Inscription</strong>
                         </a>
-                        <a class="button is-light is-small" href="#">
+                        <a class="button is-light is-small" href="{{ path('app_login') }}">
                             Connexion
                         </a>
                     </div>
