@@ -3,11 +3,10 @@
 namespace App\DataFixtures;
 
 use App\Entity\Artist;
-use Doctrine\Persistence\ObjectManager;
 
 class ArtistFixtures extends BaseFixture
 {
-    protected function loadData(ObjectManager $manager)
+    protected function loadData()
     {
         $this->createMany(30, 'artist' , function () {
             return (new Artist())

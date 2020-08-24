@@ -3,11 +3,10 @@
 namespace App\DataFixtures;
 
 use App\Entity\Producer;
-use Doctrine\Persistence\ObjectManager;
 
 class ProducerFixtures extends BaseFixture
 {
-    protected function loadData(ObjectManager $manager)
+    protected function loadData()
     {
         $this->createMany(10, 'producer', function () {
             return (new Producer())
