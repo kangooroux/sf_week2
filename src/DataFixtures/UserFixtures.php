@@ -30,6 +30,7 @@ class UserFixtures extends BaseFixture
                 ->setEmail('admin.' . $i . '@ktest.com')
                 ->setRoles(['ROLE_ADMIN'])
                 ->setPassword($password)
+                ->setPseudo($this->faker->unique()->userName)
             ;
         } );
 
@@ -41,7 +42,8 @@ class UserFixtures extends BaseFixture
             return $user
                 ->setEmail('user.' . $i . '@ktest.com')
                 ->setPassword($password)
-                ;
+                ->setPseudo($this->faker->unique()->userName)
+            ;
         } );
 
     }

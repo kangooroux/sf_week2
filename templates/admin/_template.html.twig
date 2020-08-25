@@ -1,3 +1,4 @@
+
 {# On indique de quel template on hérite.
    Le chemin est à indiquer depuis le répertoire racine des templates (templates/) #}
 {% extends "base.html.twig" %}
@@ -11,7 +12,7 @@
         <div class="navbar-brand">
             <a class="navbar-item" href="{{ path('homepage') }}">
                 <p class="subtitle is-4 has-text-primary">
-                    <i class="fab fa-korvue"></i><b>-test</b>
+                    Back-office
                 </p>
             </a>
 
@@ -23,20 +24,14 @@
         </div>
 
         <div id="navbarBasicExample" class="navbar-menu">
+
             <div class="navbar-start">
-                <a class="navbar-item" href="{{ path('artist_list') }}">
-                    Artistes
+                <a class="navbar-item" href="{{ path('homepage') }}">
+                    Retour
                 </a>
-
-                <a class="navbar-item" href=" {{ path('record_news') }}">
-                    Nouveautés
-                </a>
-
             </div>
 
             <div class="navbar-end">
-            {% if is_granted("ROLE_USER") %}
-
                 <div class="navbar-item">
                     <div class="buttons">
                         <a class="button is-primary is-small" href="#">
@@ -48,43 +43,15 @@
                         </a>
                     </div>
                 </div>
-                {% if is_granted("ROLE_EDITOR") %}
-                    <div class="navbar-item">
-                        <div class="buttons">
-                            <a class="button is-info is-small" href="{{ path('admin_dashboard') }}">
-                                Back-office
-                            </a>
-                        </div>
-                    </div>
-                {% endif %}
-            {% else %}
                 <div class="navbar-item">
                     <div class="buttons">
-                        <a class="button is-primary is-small" href="#">
-                            <strong>Inscription</strong>
-                        </a>
-                        <a class="button is-light is-small" href="{{ path('app_login') }}">
-                            Connexion
+                        <a class="button is-info is-small" href="{{ path('admin_dashboard') }}">
+                            Back-office
                         </a>
                     </div>
                 </div>
-            {% endif %}
-
-                <a class="navbar-item">
-                    <form action="#">
-                        <div class="field has-addons">
-                            <div class="control is-expanded">
-                                <input name="query" type="text" class="input is-small" placeholder="Recherche ..." required>
-                            </div>
-                            <div class="control">
-                                <button type="submit" class="button is-primary is-small">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </a>
             </div>
+
         </div>
     </nav>
 

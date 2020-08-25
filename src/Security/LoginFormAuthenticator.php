@@ -56,13 +56,13 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
     public function getCredentials(Request $request)
     {
         $credentials = [
-            'email' => $request->request->get('email'),
+            'username' => $request->request->get('inputUserLogin'),
             'password' => $request->request->get('password'),
             'csrf_token' => $request->request->get('_csrf_token'),
         ];
         $request->getSession()->set(
             Security::LAST_USERNAME,
-            $credentials['email']
+            $credentials['username']
         );
 
         return $credentials;
@@ -78,14 +78,26 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
             throw new InvalidCsrfTokenException();
         }
 
-        $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials['email']]);
+        $userByMail = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials['username']]);
+        $userByPseudo = $this->entityManager->getRepository(User::class)->findOneBy(['pseudo' => $credentials['username']]);
 
-        if (!$user) {
+        if (!$userByMail && !$userByPseudo) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('Adresse E-mail n\'est pas reconnue.');
+            throw new CustomUserMessageAuthenticationException('L\'identifiant ou le mot de passe ne sont pas reconnu.');
+        } elseif (!$userByMail) {
+            return $userByPseudo;
+        } elseif (!$userByPseudo) {
+            return $userByMail;
         }
 
-        return $user;
+        // Autre solution
+//        $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials['username']]) ?? $this->entityManager->getRepository(User::class)->findOneBy(['pseudo' => $credentials['username']]);
+//        if (!$user) {
+//            // fail authentication with a custom error
+//            throw new CustomUserMessageAuthenticationException('L\'identifiant ou le mot de passe ne sont pas reconnu.');
+//        }
+//
+//        return $user;
     }
 
     /**
