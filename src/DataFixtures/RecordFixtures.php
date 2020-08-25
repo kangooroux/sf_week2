@@ -4,11 +4,10 @@
 namespace App\DataFixtures;
 
 use App\Entity\Record;
-use Doctrine\Persistence\ObjectManager;
 
 class RecordFixtures extends BaseFixture
 {
-    protected function loadData(ObjectManager $manager)
+    protected function loadData()
     {
         $this->createMany(100, 'record' , function () {
             return (new Record())

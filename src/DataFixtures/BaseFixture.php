@@ -29,9 +29,8 @@ abstract class BaseFixture extends Fixture {
 
     /**
      * Méthode à implémenter pour les classes qui héritent de celle-ci et générera les données
-     * @param ObjectManager $manager
      */
-    abstract protected function loadData(ObjectManager $manager);
+    abstract protected function loadData();
 
     /**
      * Méthode appelée par le système de fixtures
@@ -44,7 +43,7 @@ abstract class BaseFixture extends Fixture {
         $this->faker = Factory::create('fr_FR');
 
         //on appelle loadData() pour générer les fausses données
-        $this->loadData($manager);
+        $this->loadData();
         //on éxecute l'enregistrement en base
         $this->manager->flush();
     }
@@ -65,7 +64,7 @@ abstract class BaseFixture extends Fixture {
     {
         for ($i = 0;$i < $count;$i++) {
             //on éxecute $factoryqui doit retourner l'entité générée
-            $entity = $factory();
+            $entity = $factory($i);
 
             //vérifier que l'entité ait bien été retournée
             if ($entity === null) {
