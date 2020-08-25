@@ -48,7 +48,6 @@ class RecordController extends AbstractController
     /**
      * Page d'un album
      * @Route("/news", name="record_news")
-     * @IsGranted("ROLE_ADMIN")
      */
     public function newRecord(RecordRepository $recordRepository)
     {
