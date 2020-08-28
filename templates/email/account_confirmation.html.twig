@@ -1,0 +1,8 @@
+<h1>Bienvenue, {{ user.pseudo }}</h1>
+
+<p>
+    Votre compte sur Ktest a bien été créé,
+    merci de confirmer votre inscription en cliquant su le lien suivant:
+</p>
+
+<a href="{{ url('account_confirmation', {id: user.id, token: user.token}) }}">Confirmer mon compte</a>
